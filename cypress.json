@@ -1,0 +1,22 @@
+{
+  "baseUrl": "https://www.webdriveruniversity.com/",
+  "chromeWebSecurity": false,
+  "defaultCommandTimeout": 10000,
+  "pageLoadTimeout": 8000,
+  "viewportHeight": 1080,
+  "viewportWidth": 1920,
+  "env": {
+    "homepage-webdriver-uni": "https://www.webdriveruniversity.com/Contact-Us/contactus.html",
+    "automation-test": "https://www.automationteststore.com/",
+    "first_name": "Aras",
+    "last_name": "Yildirim",
+    "email": "aras@gmail.com",
+    "message": "Only the fool test the depth of the river with both feet !!!",
+    "RETRIES": 2
+  },
+  "projectId": "5rkxf9",
+  "reporter": "cypress-multi-reporters",
+  "reporterOptions": {
+    "configFile": "reporter-config.json"
+  }
+}
