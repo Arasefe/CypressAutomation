@@ -16,13 +16,15 @@ describe("Test Contact", () => {
     cy.get('[name="email"]').clear().type(`${email}`);
     cy.get('[name="message"]').clear().type(`${message}`);
     cy.get('[type="submit"]').click({ log: true });
+    cy.get("h1").should("have.text", "Thank You for your Message!");
   });
 
-  it("Negative Test of adding contact", () => {
+  it.only("Negative Test of adding contact", () => {
     cy.get('[name="first_name"]').clear().type(`${firstName}`);
     cy.get('[name="last_name"]').clear().type(`${lastName}`);
     // cy.get('[name="email"]').clear().type(`${email}`);
     cy.get('[name="message"]').clear().type(`${message}`);
     cy.get('[type="submit"]').click({ log: true });
+    cy.get("body").contains("Error: all fields are required");
   });
 });
