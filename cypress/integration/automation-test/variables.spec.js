@@ -10,20 +10,32 @@ describe("Variables, Cypress and jquery Commands", () => {
     cy.visit(`${homepage}`);
   });
 
-  it("Navifgating to specific product pages", () => {
-    cy.get(`${homepage}`);
+  it("Navigating to specific product pages", () => {
     const makeuplink = cy
       .get('a[href*="product/category&path"]')
       .contains("Makeup");
+    makeuplink.click();
+
     const skincarelink = cy
       .get('a[href*="product/category&path"]')
       .contains("Skincare");
-    makeuplink.click();
+
     skincarelink.click();
   });
 
-  it("Click on the first item using item text", () => {
-    cy.get(`${homepage}`);
-    cy.get("a.productname").contains("Skinsheen Bronzer Stick");
+  it("Navigating to specific product pages with Cypress recommended approach", () => {
+    cy.get('a[href*="product/category&path"]').contains("Makeup").click();
+
+    cy.get('a[href*="product/category&path"]').contains("Skincare").click();
+  });
+
+  it("Navigating to specific product pages ", () => {
+    cy.get('a[href*="product/category&path"]').contains("Makeup").click();
+
+    cy.get("h1 .maintext").then(($headerText) => {
+      const headerText = $headerText.text();
+      cy.log(`Found header text: ${headerText}`);
+      expect(headerText).is.eq("Makeup");
+    });
   });
 });
