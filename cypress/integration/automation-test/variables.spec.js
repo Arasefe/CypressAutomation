@@ -2,10 +2,7 @@
 
 describe("Variables, Cypress and jquery Commands", () => {
   const homepage = Cypress.env("automation-test");
-  const firstName = Cypress.env("first_name");
-  const lastName = Cypress.env("last_name");
-  const email = Cypress.env("email");
-  const message = Cypress.env("message");
+
   beforeEach(() => {
     cy.visit(`${homepage}`);
   });
@@ -37,5 +34,24 @@ describe("Variables, Cypress and jquery Commands", () => {
       cy.log(`Found header text: ${headerText}`);
       expect(headerText).is.eq("Makeup");
     });
+  });
+
+  it.only("Validate properties of the Contact Us Page", () => {
+    cy.get(
+      '[href="https://automationteststore.com/index.php?rt=content/contact"]'
+    )
+      .click()
+      .then(() => {
+        //const title = cy.title();
+        expect(cy.title()).is.eq("Contact Us");
+      });
+    // Uses Cypress Commands and Chaining
+    cy.contains("#ContactUsFrm", "Contact Us Form")
+      .find("#field_11")
+      .should("contain", "First name");
+
+    // JQuery Approach
+
+    // Embedded Commands
   });
 });

@@ -2,10 +2,7 @@
 
 describe("Inspect Automation Test Store Items", () => {
   const homepage = Cypress.env("automation-test");
-  const firstName = Cypress.env("first_name");
-  const lastName = Cypress.env("last_name");
-  const email = Cypress.env("email");
-  const message = Cypress.env("message");
+
   beforeEach(() => {
     cy.visit(`${homepage}`);
   });
