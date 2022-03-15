@@ -8,27 +8,52 @@ describe("Handling autocomplete dropdowns in webdriveruni", () => {
     cy.get("#autocomplete-textfield")
       .invoke("removeAttr", "target")
       .click({ force: true });
-    // Type A and wait for autocomplete and select A from dropdown list
-    cy.get("#myInput").type("A").should("have.value", "java");
-
-    // Select A from dropdown list
-    cy.get("#myInput").type("A").should("have.value", "java");
+    // Type A and wait for autocomplete
+    cy.get("#myInput").type("A");
+    // Select Avacado from dropdown list
+    cy.get("#myInputautocomplete-list > *")
+      .each(($el, $list) => {
+        const product = $el.text();
+        const prodToSelect = "Avacado";
+        if (product === prodToSelect) {
+          $el.click();
+          cy.get("#submit-button").click();
+          cy.url().should("include", prodToSelect);
+        }
+      })
+      .then(() => {
+        cy.get("#myInput").type("g");
+        cy.get("#myInputautocomplete-list > *").each(($el, $list) => {
+          const product = $el.text();
+          const prodToSelect = "Garlic";
+          if (product === prodToSelect) {
+            $el.click();
+            cy.get("#submit-button").click();
+            cy.url().should("include", prodToSelect);
+          }
+        });
+      });
   });
 
-  it("Validate specific dropdown ", () => {
+  it("Select specific values via autocomplete list challenge", () => {
     // Open webdriveruniversity homepage
     cy.visit("http://www.webdriveruniversity.com");
     // In order for openning the tab inside the current window we need to remove the target attribute and value JQuery Method of removeAttrb
-    cy.get("#dropdown-checkboxes-radiobuttons")
+    cy.get("#autocomplete-textfield")
       .invoke("removeAttr", "target")
       .click({ force: true });
-
-    // Select Maven from second dropdown list
-    cy.get("[id='dropdowm-menu-2']")
-      .select("maven")
-      .should("have.value", "maven");
-
-    // Select TestNG from second dropdown list
-    cy.get("[id='dropdowm-menu-2']").select("TestNG").contains("TestNG");
+    // Type g and wait for autocomplete
+    cy.get("#myInput").type("f");
+    // Select Garlic from dropdown list
+    cy.get("#myInputautocomplete-list > *").each(($el, $list) => {
+      const product = $el.text();
+      const prodToSelect = "French+dip";
+      if (product === prodToSelect) {
+        // $el.click(); this is deprecated
+        $el.trigger("click");
+        cy.get("#submit-button").click();
+        cy.url().should("include", prodToSelect);
+      }
+    });
   });
 });
