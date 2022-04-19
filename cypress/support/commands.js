@@ -19,6 +19,10 @@
 //
 // -- This is a dual command --
 // Cypress.Commands.add("dismiss", { prevSubject: 'optional'}, (subject, options) => { ... })
+Cypress.Commands.add('navigateToWebDriverUni',()=>{
+    cy.visit(Cypress.config().baseUrl);
+})
+
 Cypress.Commands.add("selectProduct", productName => {
     cy.get(".fixed_wrapper .prdocutname").each(($el, index, $list) => {
         if($el.text().includes(productName)) {
