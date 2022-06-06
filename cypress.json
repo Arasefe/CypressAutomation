@@ -5,6 +5,8 @@
   "pageLoadTimeout": 8000,
   "viewportHeight": 1080,
   "viewportWidth": 1920,
+  "ignoreTestFiles":"**/other/*",
+  "videosFolder":"cypress/videos/testExecutionVideos",
   "env": {
     "homepage-webdriver-uni": "https://www.webdriveruniversity.com/Contact-Us/contactus.html",
     "automation-test": "https://www.automationteststore.com/",

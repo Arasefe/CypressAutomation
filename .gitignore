@@ -1,1 +1,38 @@
+# node artifacts
 node_modules
+dist
+cypress/videos
+cypress/screenshots
+
+# compiled java class files
+*.class
+
+# Log files
+*.log
+
+# Package files
+*.jar
+
+# Maven
+target/
+dist/
+
+# Applications
+*.app
+*.exe
+*.war
+
+# Large media files
+*.mp4
+*.tiff
+*.avi
+*.flv
+*.mov
+*.wmv
+
+
+
+
+
+
+

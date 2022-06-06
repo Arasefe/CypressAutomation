@@ -4,6 +4,7 @@ describe("Alias and invoke tets", () => {
   const homepage = Cypress.env("automation-test");
 
   beforeEach(() => {
+    // Given I am on the landing page
     cy.visit(`${homepage}`);
   });
 
