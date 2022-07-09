@@ -6,6 +6,7 @@ describe("Test Contact", () => {
   const lastName = Cypress.env("last_name");
   const email = Cypress.env("email");
   const message = Cypress.env("message");
+
   beforeEach(() => {
     cy.visit(`${homepage}`);
   });
